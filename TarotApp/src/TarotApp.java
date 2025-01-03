@@ -3,6 +3,10 @@ public class TarotApp {
         
         Deck deck = new Deck();
         deck.numberDraw(20);
-        deck.randomDraw();
+        deck.shuffleDeck();
+        deck.numberDraw(20);
+        deck.unshuffleDeck();
+        deck.numberDraw(20);
+        
     } 
 }
