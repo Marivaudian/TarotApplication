@@ -5,15 +5,22 @@ public class Card {
     private String cardName;
     private String cardUprightDescription;
     private String cardReversedDescription;
+    private String cardNumber;
     private boolean cardOrientation;
     private Color cardColor;
 
-    public Card(String cardName, String cardUprightDescription, String cardReversedDescription, Color cardColor){
+    public Card(String cardNumber, String cardName, String cardUprightDescription, String cardReversedDescription, Color cardColor){
+        this.cardNumber = cardNumber;
         this.cardName = cardName;
         this.cardUprightDescription = cardUprightDescription;
         this.cardReversedDescription = cardReversedDescription;     
         this.cardOrientation = true; //false in this case means regular reading, or upright
         this.cardColor = cardColor;
+    }
+
+    public String GetCardNumber(){
+        //returns card number
+        return cardNumber;
     }
 
     public String getCardName(){

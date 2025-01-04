@@ -82,7 +82,7 @@ public class TarotFrame extends JFrame{
         //When button is clicked, draws a random card. Repeating cards trigger a font size increase and unique color change.
         drawButton.addActionListener(e ->{
             Card drawnCard = deck.randomDraw();
-            addDraw(drawnCard.getCardName());
+            addDraw(drawnCard);
             if(previousCardName == drawnCard.getCardName()){
                 cardNameLabel.setFont(new Font("Canterbury", Font.BOLD, 50));
                 cardNameLabel.setForeground(drawnCard.getCardColor());
@@ -148,10 +148,10 @@ public class TarotFrame extends JFrame{
         
     }
 
-    private void addDraw(String cardName) {
+    private void addDraw(Card card) {
         counter++;
     
-        JLabel cardLabel = new JLabel(cardName);
+        JLabel cardLabel = new JLabel(card.GetCardNumber(), SwingConstants.CENTER);
     
         if (west.getComponentCount() >= 4) {
             Component oldestDraw = west.getComponent(3);
