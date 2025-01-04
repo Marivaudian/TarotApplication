@@ -1,15 +1,19 @@
+import java.awt.Color;
+
 public class Card {
 
     private String cardName;
     private String cardUprightDescription;
     private String cardReversedDescription;
     private boolean cardOrientation;
+    private Color cardColor;
 
-    public Card(String cardName, String cardUprightDescription, String cardReversedDescription){
+    public Card(String cardName, String cardUprightDescription, String cardReversedDescription, Color cardColor){
         this.cardName = cardName;
         this.cardUprightDescription = cardUprightDescription;
         this.cardReversedDescription = cardReversedDescription;     
         this.cardOrientation = true; //false in this case means regular reading, or upright
+        this.cardColor = cardColor;
     }
 
     public String getCardName(){
@@ -36,5 +40,10 @@ public class Card {
         //changes card orientation based on given boolean value
         this.cardOrientation = cardOrientation;
     } 
+
+    public Color getCardColor(){
+        //returns card name
+        return cardColor;
+    }
 
 }
