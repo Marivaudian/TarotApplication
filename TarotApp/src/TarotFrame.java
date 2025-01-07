@@ -59,11 +59,13 @@ public class TarotFrame extends JFrame {
         east.setLayout(new GridLayout(4, 1));
         central.setLayout(new BorderLayout());
         west.setLayout(new GridLayout(4, 1));
-        south.setLayout(new GridLayout(1, 2));
+        south.setLayout(new GridLayout(1, 3));
+
+        JTextField cat = new JTextField(16);
 
         JLabel cardNameLabel = new JLabel();
         createText(cardNameLabel, 50, Color.BLACK);
-        cardNameLabel.setText("Card Name Goes Here");
+        cardNameLabel.setText("Draw a card");
         cardNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         JButton drawButton = new JButton("Draw");
@@ -96,22 +98,36 @@ public class TarotFrame extends JFrame {
 
         // When button is clicked, shuffles the deck.
         shuffleButton.addActionListener(e -> {
-
+            deck.shuffleDeck();
         });
 
         JButton resetButton = new JButton("Reset");
-        shuffleButton.setPreferredSize(new Dimension(150, 75));
-        shuffleButton.setFont(new Font("Canterbury", Font.PLAIN, 25));
+        resetButton.setPreferredSize(new Dimension(150, 75));
+        resetButton.setFont(new Font("Canterbury", Font.PLAIN, 25));
 
         // When button is clicked, shuffles the deck.
         resetButton.addActionListener(e -> {
+            deck.unshuffleDeck();
+            west.removeAll();
+            east.removeAll();
 
+            cardNameLabel.setText("Draw a card");
+
+            this.revalidate();
+            this.repaint();
+            
         });
+
+        
+
 
         north.add(cardNameLabel);
 
         south.add(drawButton);
         south.add(shuffleButton);
+        south.add(resetButton);
+
+        JButton card = new JButton();
 
         this.setLayout(new BorderLayout());
         this.add(north, BorderLayout.NORTH);
@@ -135,6 +151,7 @@ public class TarotFrame extends JFrame {
 
         JLabel cardLabel = new JLabel(card.GetCardNumber(), SwingConstants.CENTER);
         createText(cardLabel, 50, Color.BLACK);
+        
 
         if (west.getComponentCount() > 0) {
             Component nextCard = west.getComponent(0);
@@ -156,10 +173,8 @@ public class TarotFrame extends JFrame {
 
         west.add(cardLabel, 0);
 
-        west.revalidate();
-        west.repaint();
-        east.revalidate();
-        east.repaint();
+        this.revalidate();
+        this.repaint();
     }
 
     static void disableButton(JButton button, int time) {
